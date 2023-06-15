@@ -1,0 +1,14 @@
+spring:
+  application:
+    # 文件名称
+    name: userService
+  profiles:
+    # 文件版本
+    active: dev
+  cloud:
+    nacos:
+      config:
+        # 文件格式
+        file-extension: yml
+        # 地址
+        server-addr: localhost:8848

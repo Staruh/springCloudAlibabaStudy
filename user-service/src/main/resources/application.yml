@@ -1,0 +1,19 @@
+server:
+  port: 8773
+spring:
+  application:
+    name: userService
+  cloud:
+    loadbalancer:
+      nacos:
+        # 使用nacos集群策略
+        enabled: true
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # nacos集群地址
+        cluster-name: Nanjing
+        # 权重越高,越优先调用
+        weight: 1
+        # 添加namespace 隔离生产环境与测试环境
+        namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d
