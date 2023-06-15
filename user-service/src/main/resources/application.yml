@@ -16,4 +16,4 @@ spring:
         # 权重越高,越优先调用
         weight: 1
         # 添加namespace 隔离生产环境与测试环境
-        namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d
+        # namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d

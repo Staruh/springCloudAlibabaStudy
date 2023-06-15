@@ -13,7 +13,7 @@ spring:
         server-addr: localhost:8848
         cluster-name: Nanjing
         # 添加namespace 隔离生产环境与测试环境
-        namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d
+        # namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloudstudy
