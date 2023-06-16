@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>springCloudStudy</artifactId>
+    <artifactId>springCloudAlibabaStudy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>springCloudStudy</name>
-    <description>springCloudStudy</description>
+    <name>springCloudAlibabaStudy</name>
+    <description>springCloudAlibabaStudy</description>
     <modules>
         <module>user-service</module>
         <module>book-service</module>

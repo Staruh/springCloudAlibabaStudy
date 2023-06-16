@@ -17,3 +17,7 @@ spring:
         weight: 1
         # 添加namespace 隔离生产环境与测试环境
         # namespace: 2c87b8d3-214c-4179-84e9-848f981c1b7d
+    # 添加 sentinel
+    sentinel:
+      transport:
+        dashboard: localhost:8858

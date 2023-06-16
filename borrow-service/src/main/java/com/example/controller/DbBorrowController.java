@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.fastjson.JSONObject;
 import com.example.entity.DbBorrow;
 import com.example.entity.borrowDetail;
 import com.example.service.DbBorrowService;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 
 /**
  * (DbBorrow)表控制层
@@ -25,11 +28,20 @@ public class DbBorrowController {
     @Resource
     private DbBorrowService dbBorrowService;
 
+    @RequestMapping("/blocked")
+    JSONObject blocked() {
+        JSONObject object = new JSONObject();
+        object.put("code", 403);
+        object.put("success", false);
+        object.put("message", "信息请求过快");
+        return object;
+    }
+
     /**
      * 分页查询
      *
-     * @param dbBorrow 筛选条件
-     * @param pageRequest      分页对象
+     * @param dbBorrow    筛选条件
+     * @param pageRequest 分页对象
      * @return 查询结果
      */
     @GetMapping

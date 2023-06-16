@@ -1,5 +1,7 @@
 package com.example.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.entity.DbBook;
 import com.example.entity.DbBorrow;
 import com.example.dao.DbBorrowDao;
@@ -8,14 +10,17 @@ import com.example.entity.borrowDetail;
 import com.example.service.DbBorrowService;
 import com.example.service.client.bookClient;
 import com.example.service.client.userClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,6 +40,7 @@ public class DbBorrowServiceImpl implements DbBorrowService {
     @Resource
     bookClient bookClient;
 
+    @SentinelResource(value = "details", blockHandler = "blocked")
     @Override
     public borrowDetail getBorrowDetailById(Integer uid) {
         List<DbBorrow> dbBorrowList = dbBorrowDao.queryById(uid);
@@ -49,6 +55,11 @@ public class DbBorrowServiceImpl implements DbBorrowService {
             books.add(book);
         });
         return new borrowDetail(dbUser,books);
+    }
+
+//    替代方案 ,通过设置 @SentinelResource(value = "details", blockHandler = "blocked")注解实现
+    public borrowDetail blocked(@PathVariable("uid") Integer uid, BlockException e) {
+        return new borrowDetail(null, Collections.emptyList());
     }
 
     @Override

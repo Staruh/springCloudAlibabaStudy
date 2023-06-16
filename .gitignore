@@ -4,3 +4,6 @@
 /commons/target/
 /user-service/target/
 /nacos
+/logs
+/work
+/Sentinel
